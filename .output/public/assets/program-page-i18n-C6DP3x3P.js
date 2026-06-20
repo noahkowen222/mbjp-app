@@ -1,1 +1,0 @@
-import{B as e}from"./index-DgqzNNyF.js";function t(t){let{language:n}=e(),r=n in t?n:`en`,i=r===`en`?`ltr`:`rtl`,a=i===`rtl`,o=a?`text-right`:`text-left`,s=a?`mr-2 rotate-180`:`ml-2`;return{copy:t[r],language:r,isRtl:a,textDir:i,textAlignClass:o,arrowClass:s}}export{t};
