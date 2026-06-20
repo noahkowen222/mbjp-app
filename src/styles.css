@@ -3185,3 +3185,45 @@ button.admin-quick-action {
     max-width: min(9rem, 32vw);
   }
 }
+
+/* Mobile dropdown safety: keep header menus inside the viewport and prevent side scrolling. */
+html,
+body,
+#root {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 1023px) {
+  .site-mobile-main-nav {
+    position: relative;
+    overflow: visible;
+  }
+
+  .site-programs-menu,
+  .site-more-menu {
+    position: fixed !important;
+    left: max(0.9rem, env(safe-area-inset-left)) !important;
+    right: max(0.9rem, env(safe-area-inset-right)) !important;
+    top: calc(env(safe-area-inset-top) + 10.3rem) !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100dvh - 13rem) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  .site-more-menu {
+    padding: 0.65rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-programs-menu,
+  .site-more-menu {
+    top: calc(env(safe-area-inset-top) + 9.85rem) !important;
+  }
+}

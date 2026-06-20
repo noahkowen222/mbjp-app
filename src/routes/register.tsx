@@ -4,6 +4,11 @@ import type { ChangeEvent, FormEvent, ReactNode } from 'react'
 import { useI18n, type TranslationKey } from '../lib/i18n'
 import { supabase } from '../lib/supabase/client'
 import {
+  getCurrentUserWithFallback,
+  toSupabaseTimeoutMessage,
+  withSupabaseTimeout,
+} from '../lib/supabase/auth-timeout'
+import {
   MEMBERSHIP_BASE_FEE,
   MEMBERSHIP_MANUAL_PAYMENT_DETAILS,
   MEMBERSHIP_PAYMENT_QR_IMAGE_PATH,
@@ -348,85 +353,100 @@ function RegisterPage() {
     setLoading(true)
     setError('')
 
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser()
+    try {
+      const { user, timedOut } = await getCurrentUserWithFallback()
 
-    if (userError || !user) {
-      navigate({ to: '/login' })
-      return
-    }
+      if (!user) {
+        await navigate({ to: '/login' })
+        return
+      }
 
-    setUserId(user.id)
+      setUserId(user.id)
 
-    const { data: rawData, error: memberError } = await supabase
-      .from('members')
-      .select(
-        [
-          'id',
-          'status',
-          'address',
-          'date_of_birth',
-          'gender',
-          'education',
-          'blood_group',
-          'emergency_contact_name',
-          'emergency_contact_relation',
-          'emergency_contact_mobile',
-          'declaration_accepted',
-          'full_name',
-          'father_name',
-          'cnic',
-          'mobile',
-          'district',
-          'taluka',
-          'profession',
-          'caste_branch',
-          'photo_url',
-        ].join(', '),
+      const { data: rawData, error: memberError } = await withSupabaseTimeout(
+        supabase
+          .from('members')
+          .select(
+            [
+              'id',
+              'status',
+              'address',
+              'date_of_birth',
+              'gender',
+              'education',
+              'blood_group',
+              'emergency_contact_name',
+              'emergency_contact_relation',
+              'emergency_contact_mobile',
+              'declaration_accepted',
+              'full_name',
+              'father_name',
+              'cnic',
+              'mobile',
+              'district',
+              'taluka',
+              'profession',
+              'caste_branch',
+              'photo_url',
+            ].join(', '),
+          )
+          .eq('user_id', user.id)
+          .maybeSingle(),
+        12000,
+        'Membership form loading timed out.',
       )
-      .eq('user_id', user.id)
-      .maybeSingle()
 
-    if (memberError) {
-      setError(memberError.message)
+      if (memberError) throw memberError
+
+      const data = rawData as unknown as ExistingMember | null
+
+      if (data) {
+        setExistingMember(data)
+        setForm(memberToForm(data))
+
+        const { data: paymentData, error: paymentError } = await withSupabaseTimeout(
+          supabase
+            .from('membership_payments')
+            .select('*')
+            .eq('member_id', data.id)
+            .maybeSingle()
+            .returns<MembershipPayment | null>(),
+          12000,
+          'Membership payment status loading timed out.',
+        )
+
+        if (!paymentError) {
+          setExistingMembershipPayment(paymentData ?? null)
+        }
+
+        if (data.photo_url) {
+          const { data: signed } = await withSupabaseTimeout(
+            supabase.storage
+              .from('member-photos')
+              .createSignedUrl(data.photo_url, 60 * 60),
+            12000,
+            'Member photo loading timed out.',
+          )
+
+          setExistingPhotoSignedUrl(signed?.signedUrl ?? null)
+        }
+      } else {
+        const draft = readDraft(user.id)
+
+        if (draft) {
+          setForm({ ...initialForm, ...draft.form })
+          setDraftSavedAt(draft.savedAt)
+        }
+      }
+
+      if (timedOut) {
+        setError('Session validation was slow, but the saved login session was loaded successfully.')
+      }
+    } catch (err) {
+      setError(toSupabaseTimeoutMessage(err, 'Failed to load membership form.'))
+    } finally {
       setLoading(false)
-      return
     }
-
-    const data = rawData as unknown as ExistingMember | null
-
-    if (data) {
-      setExistingMember(data)
-      setForm(memberToForm(data))
-
-      const { data: paymentData } = await supabase
-        .from('membership_payments')
-        .select('*')
-        .eq('member_id', data.id)
-        .maybeSingle()
-        .returns<MembershipPayment | null>()
-
-      setExistingMembershipPayment(paymentData ?? null)
-
-      if (data.photo_url) {
-        const { data: signed } = await supabase.storage
-          .from('member-photos')
-          .createSignedUrl(data.photo_url, 60 * 60)
-
-        setExistingPhotoSignedUrl(signed?.signedUrl ?? null)
-      }
-    } else {
-      const draft = readDraft(user.id)
-
-      if (draft) {
-        setForm({ ...initialForm, ...draft.form })
-        setDraftSavedAt(draft.savedAt)
-      }
-    }
-
-    setLoading(false)
   }
 
   function updateField<K extends keyof RegisterFormState>(

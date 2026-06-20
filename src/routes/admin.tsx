@@ -34,6 +34,11 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabase/client'
 import {
+  getCurrentUserWithFallback,
+  toSupabaseTimeoutMessage,
+  withSupabaseTimeout,
+} from '../lib/supabase/auth-timeout'
+import {
   csvCell,
   formatDisplayDate as formatDate,
   maskCnic,
@@ -310,7 +315,11 @@ function AdminPage() {
       setAreaNotice('')
 
       try {
-        const access = await ensureAdminAccess()
+        const access = await withSupabaseTimeout(
+          ensureAdminAccess(),
+          12000,
+          'Admin session check timed out.',
+        )
 
         if (!access.ok) {
           if (!cancelledRef?.current) {
@@ -332,11 +341,15 @@ function AdminPage() {
           setAdminRoles(access.roles)
         }
 
-        const areaAccess = await loadCurrentAdminAreaAccess('membership', 'view', {
-          requiredRoles: ['admin', 'super_admin', 'membership_admin'],
-          userId: access.userId,
-          roles: access.roles,
-        })
+        const areaAccess = await withSupabaseTimeout(
+          loadCurrentAdminAreaAccess('membership', 'view', {
+            requiredRoles: ['admin', 'super_admin', 'membership_admin'],
+            userId: access.userId,
+            roles: access.roles,
+          }),
+          12000,
+          'Admin area permissions loading timed out.',
+        )
 
         if (!areaAccess.ok) {
           throw new Error(areaAccess.message)
@@ -411,8 +424,11 @@ function AdminPage() {
             )
           : membersQuery.range(pageFrom, pageTo)
 
-        const { data, error: membersError, count } = await pagedMembersQuery
-          .returns<Member[]>()
+        const { data, error: membersError, count } = await withSupabaseTimeout(
+          pagedMembersQuery.returns<Member[]>(),
+          15000,
+          'Admin members loading timed out.',
+        )
 
         if (membersError) throw membersError
 
@@ -437,9 +453,7 @@ function AdminPage() {
         }
       } catch (err) {
         if (!cancelledRef?.current) {
-          setError(
-            err instanceof Error ? err.message : 'Failed to load admin members.',
-          )
+          setError(toSupabaseTimeoutMessage(err, 'Failed to load admin members.'))
         }
       } finally {
         if (!cancelledRef?.current) {
@@ -1627,20 +1641,21 @@ function StatusBadge({ status }: { status: MemberStatus }) {
 }
 
 async function ensureAdminAccess(): Promise<AdminAccessResult> {
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser()
+  const { user } = await getCurrentUserWithFallback()
 
-  if (userError || !user) {
+  if (!user) {
     return { ok: false, redirectTo: '/login' }
   }
 
-  const { data: roles, error: roleError } = await supabase
-    .from('user_roles')
-    .select('role')
-    .eq('user_id', user.id)
-    .in('role', adminRoleNames)
+  const { data: roles, error: roleError } = await withSupabaseTimeout(
+    supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .in('role', adminRoleNames),
+    12000,
+    'Admin role check timed out.',
+  )
 
   if (roleError || !roles?.length) {
     return { ok: false, redirectTo: '/dashboard' }

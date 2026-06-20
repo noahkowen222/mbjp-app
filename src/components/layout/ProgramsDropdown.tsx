@@ -40,7 +40,7 @@ export function ProgramsDropdown({
         <div
           onClick={onClose}
           dir={direction}
-          className={`absolute left-0 top-full z-[60] mt-4 max-h-[min(72vh,620px)] w-[min(360px,calc(100vw-1rem))] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200 bg-white p-2 shadow-[0_24px_70px_rgba(15,23,42,0.18)] ${textAlignClass}`}
+          className={`site-programs-menu absolute left-0 top-full z-[60] mt-4 max-h-[min(72vh,620px)] w-[min(360px,calc(100vw-1rem))] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200 bg-white p-2 shadow-[0_24px_70px_rgba(15,23,42,0.18)] ${textAlignClass}`}
         >
           {items.map((item) => (
             <ProgramDropdownItem key={item.to} item={item} active={isActive(item.to)} />

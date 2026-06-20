@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import { useI18n, type TranslationKey } from '../lib/i18n'
 import { supabase } from '../lib/supabase/client'
+import { getSessionUserFast } from '../lib/supabase/auth-timeout'
 
 export const Route = createFileRoute('/login')({
   component: LoginPage,
@@ -44,9 +45,7 @@ function LoginPage() {
     let cancelled = false
 
     async function checkSession() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
+      const { user } = await getSessionUserFast()
 
       if (cancelled) return
 

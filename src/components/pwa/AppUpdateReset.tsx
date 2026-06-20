@@ -5,19 +5,6 @@ import {
   hasPwaCacheResetParam,
 } from '../../lib/pwa-cache-reset'
 
-function isStandaloneDisplay() {
-  if (typeof window === 'undefined') return false
-
-  const navigatorWithStandalone = window.navigator as Navigator & {
-    standalone?: boolean
-  }
-
-  return (
-    window.matchMedia('(display-mode: standalone)').matches ||
-    navigatorWithStandalone.standalone === true
-  )
-}
-
 function shouldForceShowReset() {
   if (typeof window === 'undefined') return false
 
@@ -38,16 +25,19 @@ export function AppUpdateReset() {
       return
     }
 
-    const shouldShow = isStandaloneDisplay() || shouldForceShowReset()
-    if (!shouldShow) return
+    if (!shouldForceShowReset()) return
 
-    const timer = window.setTimeout(() => setVisible(true), 4500)
+    const timer = window.setTimeout(() => setVisible(true), 600)
     return () => window.clearTimeout(timer)
   }, [])
 
   async function handleResetClick() {
     setIsResetting(true)
     await clearMbjpPwaCache({ reload: true, reason: 'manual-reset' })
+  }
+
+  function handleCloseClick() {
+    setVisible(false)
   }
 
   if (!visible) return null
@@ -76,7 +66,7 @@ export function AppUpdateReset() {
         <button
           type="button"
           className="mbjp-app-reset__close"
-          onClick={() => setVisible(false)}
+          onClick={handleCloseClick}
           aria-label="Hide app reset helper"
         >
           ×

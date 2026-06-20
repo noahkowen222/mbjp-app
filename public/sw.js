@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'mbjp-pwa'
-const CACHE_VERSION = 'v1-mbjp-rebrand'
+const CACHE_VERSION = 'v2-session-cache-fix'
 const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VERSION}`
 const CORE_ASSETS = [
   '/offline.html',
