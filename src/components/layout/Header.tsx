@@ -187,7 +187,7 @@ export function Header({ compact }: { compact: boolean }) {
   const dashboardLabel = isAdmin ? t('nav.adminPanel') : t('nav.dashboard')
   const programsActive = pathname.startsWith('/programs/')
   const moreActive = localizedPublicPageItems.some((item) => isActive(item.to))
-  const brandCompactName = language === 'en' ? 'MBJP' : t('brand.name')
+  const brandCompactName = 'MBJP'
 
   const accountItems = useMemo(() => {
     if (authLoading) return []
@@ -261,8 +261,9 @@ export function Header({ compact }: { compact: boolean }) {
             to="/"
             className="site-brand-link brand-pill lift-hover pressable min-w-0 rounded-[1.35rem] px-3 py-2.5 sm:px-4"
             aria-label="Marwardi Bhatti Jamaat Pakistan home"
+            title="Marwardi Bhatti Jamaat Pakistan - MBJP"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-white p-1 shadow-sm">
+            <span className="site-brand-logo flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-white p-1 shadow-sm">
               <img
                 src="/mbjp/logo.png"
                 alt="MBJP logo"
@@ -270,24 +271,21 @@ export function Header({ compact }: { compact: boolean }) {
                 draggable={false}
               />
             </span>
-            <span className="min-w-0">
-              <span className="hidden truncate font-[Manrope,Inter,sans-serif] text-xl font-extrabold tracking-tight text-white sm:block sm:text-2xl">
-                {t('brand.name')}
-              </span>
-              <span className="block truncate font-[Manrope,Inter,sans-serif] text-lg font-extrabold tracking-tight text-white sm:hidden">
+            <span className="site-brand-copy min-w-0">
+              <span className="site-brand-title block truncate font-[Manrope,Inter,sans-serif] text-lg font-extrabold tracking-tight text-white sm:text-xl">
                 {brandCompactName}
               </span>
-              <span className="mt-0.5 block truncate text-[0.65rem] font-extrabold uppercase tracking-[0.22em] text-white/60">
-                {t('brand.platform')}
+              <span className="site-brand-subtitle mt-0.5 block truncate text-[0.62rem] font-extrabold uppercase tracking-[0.18em] text-white/70">
+                Member Portal
               </span>
             </span>
-            <span className="hidden shrink-0 rounded-full border border-white/12 bg-white/10 px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.18em] text-white/90 sm:inline-flex">
+            <span className="site-brand-chip hidden shrink-0 rounded-full border border-white/12 bg-white/10 px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.18em] text-white/90 sm:inline-flex">
               MBJP
             </span>
           </Link>
         </div>
 
-        <nav className="hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Main navigation">
+        <nav className="site-primary-nav hidden items-center gap-3 xl:gap-4 lg:flex" aria-label="Main navigation">
           <NavLink to="/" label={t('nav.home')} active={isActive('/')} delayClass="delay-1" />
 
           <ProgramsDropdown
@@ -323,7 +321,7 @@ export function Header({ compact }: { compact: boolean }) {
             <div className="h-11 w-28 animate-pulse rounded-[var(--r-lg)] bg-white/25" />
           ) : isLoggedIn ? (
             <>
-              <Link to={dashboardPath} className="primary-btn animate-fade-up pressable lift-hover">
+              <Link to={dashboardPath} className="site-dashboard-link primary-btn animate-fade-up pressable lift-hover">
                 {dashboardLabel}
               </Link>
 

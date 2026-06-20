@@ -56,14 +56,14 @@ function HeroSection() {
   const { copy, textDir, textAlignClass, arrowClass } = useHomeCopy()
 
   return (
-    <section className="home-hero soft-panel animate-fade-up relative overflow-hidden rounded-[2rem] border-[#e8e0d1] bg-[linear-gradient(135deg,#fffdf8_0%,#f7f1e6_50%,#edf4ee_100%)] p-[clamp(1.35rem,4vw,3.5rem)] shadow-[0_30px_80px_rgba(11,42,29,0.10)]">
+    <section className="home-hero soft-panel animate-fade-up relative overflow-hidden rounded-[2rem] border-[#e8e0d1] bg-[linear-gradient(135deg,#fffdf8_0%,#f7f1e6_50%,#edf4ee_100%)] p-[clamp(1.35rem,3vw,3rem)] shadow-[0_30px_80px_rgba(11,42,29,0.10)]">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(196,145,44,0.16),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(11,42,29,0.10),transparent_30%)]"
         aria-hidden="true"
       />
       <AjrakPattern className="absolute right-[-2rem] top-[-2rem] h-64 w-64 opacity-[0.05]" />
 
-      <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_430px]">
+      <div className="home-hero-grid relative z-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,400px)] xl:gap-12">
         <div className={textAlignClass} dir={textDir}>
           <div className="animate-fade-up glass-strip inline-flex items-center gap-2.5 rounded-full border border-emerald-900/10 px-3.5 py-2 shadow-sm backdrop-blur">
             <span className="brand-dot" />
@@ -76,7 +76,7 @@ function HeroSection() {
             {copy.brandLine}
           </p>
 
-          <h1 className="home-hero-title animate-fade-up delay-2 mt-4 max-w-[760px] text-[clamp(2.35rem,12vw,5.6rem)] font-black uppercase leading-[0.94] tracking-[-0.06em] text-stone-950 sm:text-[clamp(2.8rem,5.8vw,5.6rem)]">
+          <h1 className="home-hero-title animate-fade-up delay-2 mt-4 max-w-[700px] text-[clamp(2.35rem,12vw,5rem)] font-black uppercase leading-[0.94] tracking-[-0.06em] text-stone-950 sm:text-[clamp(2.8rem,5vw,5rem)]">
             {copy.heroTitleLine1}
             <br />
             <span className="text-[var(--forest)]">{copy.heroTitleLine2}</span>
@@ -118,7 +118,7 @@ function HeroSection() {
           </div>
         </div>
 
-        <div className="animate-scale-in delay-3 flex justify-center lg:justify-end" dir="ltr">
+        <div className="home-card-preview-shell animate-scale-in delay-3 flex justify-center lg:justify-end" dir="ltr">
           <PortalCardPreview />
         </div>
       </div>
@@ -131,7 +131,7 @@ function PortalCardPreview() {
   const preview = copy.preview
 
   return (
-    <div className="home-card-preview lift-hover w-full max-w-[430px]" dir="ltr">
+    <div className="home-card-preview lift-hover w-full max-w-[400px]" dir="ltr">
       <div className="overflow-hidden rounded-[1.75rem] border border-emerald-950/15 bg-white shadow-[0_36px_90px_rgba(11,42,29,0.22)]">
         <div className="relative overflow-hidden bg-[linear-gradient(135deg,#06281b,#0b3a28,#115d46)] px-5 pb-6 pt-5 text-white">
           <AjrakPattern className="absolute inset-0 h-full w-full opacity-[0.05]" />
@@ -148,8 +148,8 @@ function PortalCardPreview() {
                 <p className="m-0 text-[0.6rem] font-black uppercase tracking-[0.22em] text-[#f2d48f]">
                   Digital Member ID
                 </p>
-                <p className="mt-1 text-[0.92rem] font-extrabold uppercase tracking-[-0.01em] text-white">
-                  MARWARDI BHATTI JAMAAT PAKISTAN
+                <p className="mt-1 text-[0.9rem] font-extrabold uppercase tracking-[-0.01em] text-white">
+                  MBJP Member Card
                 </p>
                 <p className="mt-1 text-[0.72rem] font-medium text-emerald-50/80">
                   {preview.cardSubtitle}

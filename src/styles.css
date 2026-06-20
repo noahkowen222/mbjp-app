@@ -2939,3 +2939,249 @@ button.admin-quick-action {
   border-color: rgb(248 113 113);
   background: rgb(254 242 242);
 }
+
+/* ─── MBJP Desktop Header + Hero Responsive Fix ────────────────
+   Keeps the 100% browser zoom layout inside the viewport while
+   preserving the balanced 67% zoom appearance. */
+.site-header {
+  overflow-x: clip;
+}
+
+.site-header-inner {
+  width: min(100% - 1.5rem, 1380px);
+  max-width: 1380px;
+  padding-inline: 0;
+}
+
+.site-brand-wrap {
+  flex: 0 1 auto;
+}
+
+.site-brand-link {
+  width: auto;
+  max-width: clamp(11rem, 18vw, 18rem);
+  min-height: 3.55rem;
+  gap: 0.65rem;
+}
+
+.site-brand-logo {
+  width: clamp(2.45rem, 3vw, 3rem) !important;
+  height: clamp(2.45rem, 3vw, 3rem) !important;
+}
+
+.site-brand-copy {
+  max-width: min(11rem, 12vw);
+}
+
+.site-brand-title {
+  font-size: clamp(1.05rem, 1.25vw, 1.35rem) !important;
+  line-height: 1;
+}
+
+.site-brand-subtitle {
+  max-width: 100%;
+  letter-spacing: clamp(0.1em, 0.8vw, 0.18em) !important;
+}
+
+.site-primary-nav {
+  flex: 0 1 auto;
+  min-width: 0;
+  gap: clamp(0.65rem, 1vw, 1rem) !important;
+}
+
+.site-primary-nav .nav-link,
+.site-primary-nav button {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.18;
+}
+
+.site-header-desktop-actions {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.site-header-desktop-actions > .inline-flex[aria-label] {
+  max-width: clamp(13rem, 17vw, 18rem);
+}
+
+.site-header-desktop-actions > .inline-flex[aria-label] > span {
+  padding-inline: 0.55rem;
+  letter-spacing: 0.12em;
+}
+
+.site-header-desktop-actions > .inline-flex[aria-label] button {
+  min-height: 2.25rem;
+  padding-inline: 0.72rem;
+}
+
+.site-dashboard-link {
+  min-width: 0;
+  min-height: 2.65rem;
+  padding-inline: clamp(1rem, 1.4vw, 1.45rem) !important;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.05;
+}
+
+.home-page .page-wrap {
+  max-width: 1280px;
+}
+
+.home-hero {
+  max-width: 100%;
+}
+
+.home-hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.home-card-preview-shell,
+.home-card-preview,
+.home-card-preview > * {
+  min-width: 0;
+}
+
+.home-card-preview {
+  max-width: min(100%, 400px);
+}
+
+.home-card-preview-info {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .home-page-wrap {
+    padding-top: 2rem !important;
+  }
+
+  .home-hero {
+    padding: clamp(2rem, 3vw, 3rem) !important;
+  }
+
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 400px) !important;
+    gap: clamp(2rem, 3vw, 3rem) !important;
+  }
+
+  .home-page .home-hero-title {
+    max-width: 700px;
+    font-size: clamp(3.4rem, 4.8vw, 5rem) !important;
+    line-height: 0.94;
+  }
+}
+
+@media (max-width: 1380px) and (min-width: 1024px) {
+  .site-header-inner {
+    width: min(100% - 1.25rem, 1280px);
+    gap: 0.65rem !important;
+  }
+
+  .site-brand-link {
+    max-width: 12.5rem;
+    padding-inline: 0.75rem !important;
+  }
+
+  .site-brand-copy {
+    max-width: 7.25rem;
+  }
+
+  .site-brand-chip {
+    display: none !important;
+  }
+
+  .site-primary-nav {
+    gap: 0.55rem !important;
+  }
+
+  .site-primary-nav .nav-link,
+  .site-primary-nav button {
+    font-size: 0.82rem;
+  }
+
+  .site-header-desktop-actions {
+    gap: 0.45rem !important;
+  }
+
+  .site-header-desktop-actions > .inline-flex[aria-label] {
+    max-width: 12.75rem;
+  }
+
+  .site-header-desktop-actions > .inline-flex[aria-label] > span {
+    display: none;
+  }
+
+  .site-header-desktop-actions > .inline-flex[aria-label] button {
+    padding-inline: 0.62rem;
+  }
+
+  .site-dashboard-link {
+    max-width: 5.85rem;
+    padding-inline: 0.8rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .home-page .page-wrap {
+    max-width: 1180px;
+  }
+
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 370px) !important;
+  }
+
+  .home-page .home-hero-title {
+    font-size: clamp(3.05rem, 4.4vw, 4.35rem) !important;
+  }
+
+  .home-card-preview {
+    max-width: 370px;
+  }
+
+  .home-card-preview-body {
+    grid-template-columns: 86px minmax(0, 1fr) !important;
+    gap: 0.85rem !important;
+  }
+
+  .home-card-preview-body .h-24.w-24 {
+    width: 5.25rem !important;
+    height: 5.25rem !important;
+  }
+
+  .home-card-preview .text-2xl {
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 1024px) {
+  .site-primary-nav,
+  .site-header-desktop-actions {
+    display: none !important;
+  }
+
+  .site-header-mobile-actions {
+    display: flex !important;
+  }
+
+  .site-mobile-main-nav-wrap {
+    display: block !important;
+  }
+
+  .site-brand-link {
+    max-width: 16rem;
+  }
+
+  .site-brand-copy {
+    max-width: 10rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-header-inner {
+    width: min(100% - 1rem, 100%);
+  }
+
+  .site-brand-copy {
+    max-width: min(9rem, 32vw);
+  }
+}

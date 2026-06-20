@@ -1,12 +1,24 @@
-# MBJP Office Bearer Quick Issue Patch
+# MBJP Responsive Header + Hero Patch
 
-Adds a quick office bearer designation issue workflow directly on `/admin/members/$id` for approved members.
+## Purpose
+Fix desktop 100% zoom layout issues shown in the screenshots:
 
-Changed file:
-- `src/routes/admin/members/$id.tsx`
+- Header content overflowing/cropping on the right side.
+- Long brand name making the header too wide.
+- Language switcher and admin/account actions pushing out of viewport.
+- Hero section/card preview appearing too large at normal browser zoom.
 
-No migrations added. No card, verification, AdminShell, sidebar, header, payment panel, election, program, finance, or CMS files changed.
+## Changed files
 
-Validation performed in sandbox:
-- `npm run typecheck` passed
-- `npm run build` passed
+- `src/components/layout/Header.tsx`
+- `src/routes/index.tsx`
+- `src/styles.css`
+
+## What changed
+
+- Header brand pill changed to compact `MBJP / Member Portal` display while preserving full organization name in aria/title.
+- Header nav/actions received stable CSS hooks.
+- Desktop header widths, nav gaps, language switcher and Admin Panel button are responsive.
+- Header automatically switches to the mobile two-row nav for narrower desktop/laptop widths.
+- Hero panel, title and preview card scale down at 100% zoom.
+- Preview card heading shortened to avoid crowding.
