@@ -123,6 +123,48 @@ export const programItems: ProgramItem[] = [
     icon: <BriefcaseBusiness size={16} />,
     description: 'CV database, skills and placement support',
   },
+  {
+    to: '/programs/office-admin',
+    label: 'Office Admin Department',
+    icon: <ShieldCheck size={16} />,
+    description: 'Office records and internal administration',
+  },
+  {
+    to: '/programs/event-management',
+    label: 'Event Management Department',
+    icon: <CalendarDays size={16} />,
+    description: 'Meetings, events and program coordination',
+  },
+  {
+    to: '/programs/finance',
+    label: 'Finance Department',
+    icon: <Landmark size={16} />,
+    description: 'Fees, donations and finance records',
+  },
+  {
+    to: '/programs/sports',
+    label: 'Sports Department',
+    icon: <Trophy size={16} />,
+    description: 'Sports events and youth activities',
+  },
+  {
+    to: '/programs/media-marketing',
+    label: 'Media & Marketing Department',
+    icon: <Images size={16} />,
+    description: 'Announcements, campaigns and media updates',
+  },
+  {
+    to: '/programs/public-relation',
+    label: 'Public Relation Department',
+    icon: <Network size={16} />,
+    description: 'Community relations and public coordination',
+  },
+  {
+    to: '/programs/ambulance',
+    label: 'Ambulance Department',
+    icon: <HeartPulse size={16} />,
+    description: 'Emergency response and ambulance coordination',
+  },
 ]
 
 export const publicPageTranslationKeys: Record<string, string> = {
@@ -142,6 +184,13 @@ export const programTranslationKeys: Record<string, string> = {
   '/programs/health': 'health',
   '/programs/welfare': 'welfare',
   '/programs/employment': 'employment',
+  '/programs/office-admin': 'officeAdmin',
+  '/programs/event-management': 'eventManagement',
+  '/programs/finance': 'finance',
+  '/programs/sports': 'sports',
+  '/programs/media-marketing': 'mediaMarketing',
+  '/programs/public-relation': 'publicRelation',
+  '/programs/ambulance': 'ambulance',
 }
 
 export function getLoggedOutAccountItems(labels: { login: string; joinNow: string; register: string }) {

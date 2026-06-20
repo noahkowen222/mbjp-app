@@ -33,9 +33,16 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VerifyMemberNoRouteImport } from './routes/verify/$memberNo'
 import { Route as ProgramsWelfareRouteImport } from './routes/programs/welfare'
+import { Route as ProgramsSportsRouteImport } from './routes/programs/sports'
+import { Route as ProgramsPublicRelationRouteImport } from './routes/programs/public-relation'
+import { Route as ProgramsOfficeAdminRouteImport } from './routes/programs/office-admin'
+import { Route as ProgramsMediaMarketingRouteImport } from './routes/programs/media-marketing'
 import { Route as ProgramsHealthRouteImport } from './routes/programs/health'
+import { Route as ProgramsFinanceRouteImport } from './routes/programs/finance'
+import { Route as ProgramsEventManagementRouteImport } from './routes/programs/event-management'
 import { Route as ProgramsEmploymentRouteImport } from './routes/programs/employment'
 import { Route as ProgramsEducationRouteImport } from './routes/programs/education'
+import { Route as ProgramsAmbulanceRouteImport } from './routes/programs/ambulance'
 import { Route as NewsSlugRouteImport } from './routes/news/$slug'
 import { Route as CommitteesIdRouteImport } from './routes/committees/$id'
 import { Route as AdminRolesRouteImport } from './routes/admin/roles'
@@ -197,9 +204,39 @@ const ProgramsWelfareRoute = ProgramsWelfareRouteImport.update({
   path: '/programs/welfare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramsSportsRoute = ProgramsSportsRouteImport.update({
+  id: '/programs/sports',
+  path: '/programs/sports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsPublicRelationRoute = ProgramsPublicRelationRouteImport.update({
+  id: '/programs/public-relation',
+  path: '/programs/public-relation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsOfficeAdminRoute = ProgramsOfficeAdminRouteImport.update({
+  id: '/programs/office-admin',
+  path: '/programs/office-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsMediaMarketingRoute = ProgramsMediaMarketingRouteImport.update({
+  id: '/programs/media-marketing',
+  path: '/programs/media-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsHealthRoute = ProgramsHealthRouteImport.update({
   id: '/programs/health',
   path: '/programs/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsFinanceRoute = ProgramsFinanceRouteImport.update({
+  id: '/programs/finance',
+  path: '/programs/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsEventManagementRoute = ProgramsEventManagementRouteImport.update({
+  id: '/programs/event-management',
+  path: '/programs/event-management',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsEmploymentRoute = ProgramsEmploymentRouteImport.update({
@@ -210,6 +247,11 @@ const ProgramsEmploymentRoute = ProgramsEmploymentRouteImport.update({
 const ProgramsEducationRoute = ProgramsEducationRouteImport.update({
   id: '/programs/education',
   path: '/programs/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsAmbulanceRoute = ProgramsAmbulanceRouteImport.update({
+  id: '/programs/ambulance',
+  path: '/programs/ambulance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
@@ -457,9 +499,16 @@ export interface FileRoutesByFullPath {
   '/admin/roles': typeof AdminRolesRoute
   '/committees/$id': typeof CommitteesIdRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/programs/ambulance': typeof ProgramsAmbulanceRoute
   '/programs/education': typeof ProgramsEducationRouteWithChildren
   '/programs/employment': typeof ProgramsEmploymentRouteWithChildren
+  '/programs/event-management': typeof ProgramsEventManagementRoute
+  '/programs/finance': typeof ProgramsFinanceRoute
   '/programs/health': typeof ProgramsHealthRouteWithChildren
+  '/programs/media-marketing': typeof ProgramsMediaMarketingRoute
+  '/programs/office-admin': typeof ProgramsOfficeAdminRoute
+  '/programs/public-relation': typeof ProgramsPublicRelationRoute
+  '/programs/sports': typeof ProgramsSportsRoute
   '/programs/welfare': typeof ProgramsWelfareRouteWithChildren
   '/verify/$memberNo': typeof VerifyMemberNoRoute
   '/admin/cms/$slug': typeof AdminCmsSlugRoute
@@ -526,9 +575,16 @@ export interface FileRoutesByTo {
   '/admin/roles': typeof AdminRolesRoute
   '/committees/$id': typeof CommitteesIdRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/programs/ambulance': typeof ProgramsAmbulanceRoute
   '/programs/education': typeof ProgramsEducationRouteWithChildren
   '/programs/employment': typeof ProgramsEmploymentRouteWithChildren
+  '/programs/event-management': typeof ProgramsEventManagementRoute
+  '/programs/finance': typeof ProgramsFinanceRoute
   '/programs/health': typeof ProgramsHealthRouteWithChildren
+  '/programs/media-marketing': typeof ProgramsMediaMarketingRoute
+  '/programs/office-admin': typeof ProgramsOfficeAdminRoute
+  '/programs/public-relation': typeof ProgramsPublicRelationRoute
+  '/programs/sports': typeof ProgramsSportsRoute
   '/programs/welfare': typeof ProgramsWelfareRouteWithChildren
   '/verify/$memberNo': typeof VerifyMemberNoRoute
   '/admin/cms/$slug': typeof AdminCmsSlugRoute
@@ -596,9 +652,16 @@ export interface FileRoutesById {
   '/admin/roles': typeof AdminRolesRoute
   '/committees/$id': typeof CommitteesIdRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/programs/ambulance': typeof ProgramsAmbulanceRoute
   '/programs/education': typeof ProgramsEducationRouteWithChildren
   '/programs/employment': typeof ProgramsEmploymentRouteWithChildren
+  '/programs/event-management': typeof ProgramsEventManagementRoute
+  '/programs/finance': typeof ProgramsFinanceRoute
   '/programs/health': typeof ProgramsHealthRouteWithChildren
+  '/programs/media-marketing': typeof ProgramsMediaMarketingRoute
+  '/programs/office-admin': typeof ProgramsOfficeAdminRoute
+  '/programs/public-relation': typeof ProgramsPublicRelationRoute
+  '/programs/sports': typeof ProgramsSportsRoute
   '/programs/welfare': typeof ProgramsWelfareRouteWithChildren
   '/verify/$memberNo': typeof VerifyMemberNoRoute
   '/admin/cms/$slug': typeof AdminCmsSlugRoute
@@ -667,9 +730,16 @@ export interface FileRouteTypes {
     | '/admin/roles'
     | '/committees/$id'
     | '/news/$slug'
+    | '/programs/ambulance'
     | '/programs/education'
     | '/programs/employment'
+    | '/programs/event-management'
+    | '/programs/finance'
     | '/programs/health'
+    | '/programs/media-marketing'
+    | '/programs/office-admin'
+    | '/programs/public-relation'
+    | '/programs/sports'
     | '/programs/welfare'
     | '/verify/$memberNo'
     | '/admin/cms/$slug'
@@ -736,9 +806,16 @@ export interface FileRouteTypes {
     | '/admin/roles'
     | '/committees/$id'
     | '/news/$slug'
+    | '/programs/ambulance'
     | '/programs/education'
     | '/programs/employment'
+    | '/programs/event-management'
+    | '/programs/finance'
     | '/programs/health'
+    | '/programs/media-marketing'
+    | '/programs/office-admin'
+    | '/programs/public-relation'
+    | '/programs/sports'
     | '/programs/welfare'
     | '/verify/$memberNo'
     | '/admin/cms/$slug'
@@ -805,9 +882,16 @@ export interface FileRouteTypes {
     | '/admin/roles'
     | '/committees/$id'
     | '/news/$slug'
+    | '/programs/ambulance'
     | '/programs/education'
     | '/programs/employment'
+    | '/programs/event-management'
+    | '/programs/finance'
     | '/programs/health'
+    | '/programs/media-marketing'
+    | '/programs/office-admin'
+    | '/programs/public-relation'
+    | '/programs/sports'
     | '/programs/welfare'
     | '/verify/$memberNo'
     | '/admin/cms/$slug'
@@ -862,9 +946,16 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   SignupRoute: typeof SignupRoute
   VisionMissionRoute: typeof VisionMissionRoute
+  ProgramsAmbulanceRoute: typeof ProgramsAmbulanceRoute
   ProgramsEducationRoute: typeof ProgramsEducationRouteWithChildren
   ProgramsEmploymentRoute: typeof ProgramsEmploymentRouteWithChildren
+  ProgramsEventManagementRoute: typeof ProgramsEventManagementRoute
+  ProgramsFinanceRoute: typeof ProgramsFinanceRoute
   ProgramsHealthRoute: typeof ProgramsHealthRouteWithChildren
+  ProgramsMediaMarketingRoute: typeof ProgramsMediaMarketingRoute
+  ProgramsOfficeAdminRoute: typeof ProgramsOfficeAdminRoute
+  ProgramsPublicRelationRoute: typeof ProgramsPublicRelationRoute
+  ProgramsSportsRoute: typeof ProgramsSportsRoute
   ProgramsWelfareRoute: typeof ProgramsWelfareRouteWithChildren
   VerifyMemberNoRoute: typeof VerifyMemberNoRoute
   VerifyOfficeBearerOfficeBearerIdRoute: typeof VerifyOfficeBearerOfficeBearerIdRoute
@@ -1040,11 +1131,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsWelfareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/programs/sports': {
+      id: '/programs/sports'
+      path: '/programs/sports'
+      fullPath: '/programs/sports'
+      preLoaderRoute: typeof ProgramsSportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/public-relation': {
+      id: '/programs/public-relation'
+      path: '/programs/public-relation'
+      fullPath: '/programs/public-relation'
+      preLoaderRoute: typeof ProgramsPublicRelationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/office-admin': {
+      id: '/programs/office-admin'
+      path: '/programs/office-admin'
+      fullPath: '/programs/office-admin'
+      preLoaderRoute: typeof ProgramsOfficeAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/media-marketing': {
+      id: '/programs/media-marketing'
+      path: '/programs/media-marketing'
+      fullPath: '/programs/media-marketing'
+      preLoaderRoute: typeof ProgramsMediaMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs/health': {
       id: '/programs/health'
       path: '/programs/health'
       fullPath: '/programs/health'
       preLoaderRoute: typeof ProgramsHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/finance': {
+      id: '/programs/finance'
+      path: '/programs/finance'
+      fullPath: '/programs/finance'
+      preLoaderRoute: typeof ProgramsFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/event-management': {
+      id: '/programs/event-management'
+      path: '/programs/event-management'
+      fullPath: '/programs/event-management'
+      preLoaderRoute: typeof ProgramsEventManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs/employment': {
@@ -1059,6 +1192,13 @@ declare module '@tanstack/react-router' {
       path: '/programs/education'
       fullPath: '/programs/education'
       preLoaderRoute: typeof ProgramsEducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/ambulance': {
+      id: '/programs/ambulance'
+      path: '/programs/ambulance'
+      fullPath: '/programs/ambulance'
+      preLoaderRoute: typeof ProgramsAmbulanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news/$slug': {
@@ -1591,9 +1731,16 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   SignupRoute: SignupRoute,
   VisionMissionRoute: VisionMissionRoute,
+  ProgramsAmbulanceRoute: ProgramsAmbulanceRoute,
   ProgramsEducationRoute: ProgramsEducationRouteWithChildren,
   ProgramsEmploymentRoute: ProgramsEmploymentRouteWithChildren,
+  ProgramsEventManagementRoute: ProgramsEventManagementRoute,
+  ProgramsFinanceRoute: ProgramsFinanceRoute,
   ProgramsHealthRoute: ProgramsHealthRouteWithChildren,
+  ProgramsMediaMarketingRoute: ProgramsMediaMarketingRoute,
+  ProgramsOfficeAdminRoute: ProgramsOfficeAdminRoute,
+  ProgramsPublicRelationRoute: ProgramsPublicRelationRoute,
+  ProgramsSportsRoute: ProgramsSportsRoute,
   ProgramsWelfareRoute: ProgramsWelfareRouteWithChildren,
   VerifyMemberNoRoute: VerifyMemberNoRoute,
   VerifyOfficeBearerOfficeBearerIdRoute: VerifyOfficeBearerOfficeBearerIdRoute,

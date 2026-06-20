@@ -53,7 +53,7 @@ const homeCopy = {
       titleLine1: 'Member verified',
       titleLine2: 'support programs',
       description:
-        'Program cards are now cleaned and status badges reflect the current portal rollout instead of marking every module as fully active.',
+        'Education, Health, Welfare and Employment remain as current app modules. Additional MBJP departments are listed as department gateways for public coordination and future digital workflows.',
       membership: {
         title: 'Membership Portal',
         text: 'Register as an MBJP member, track approval status and access your digital membership card.',
@@ -78,6 +78,41 @@ const homeCopy = {
         title: 'Employment Program',
         text: 'Job seekers can submit profile, skills and CV for future employment support review.',
         badge: 'Phase 2',
+      },
+      officeAdmin: {
+        title: 'Office Admin Department',
+        text: 'Office records, membership coordination, documents and internal administration support.',
+        badge: 'Department',
+      },
+      eventManagement: {
+        title: 'Event Management Department',
+        text: 'Meetings, programs, gatherings, schedules and field event coordination.',
+        badge: 'Department',
+      },
+      finance: {
+        title: 'Finance Department',
+        text: 'Membership fee coordination, donations, receipts and finance record support.',
+        badge: 'Department',
+      },
+      sports: {
+        title: 'Sports Department',
+        text: 'Community sports events, youth participation and healthy activity coordination.',
+        badge: 'Department',
+      },
+      mediaMarketing: {
+        title: 'Media & Marketing Department',
+        text: 'Announcements, public updates, social media, campaigns and communication material.',
+        badge: 'Department',
+      },
+      publicRelation: {
+        title: 'Public Relation Department',
+        text: 'Community relations, public contact, coordination and member facilitation.',
+        badge: 'Department',
+      },
+      ambulance: {
+        title: 'Ambulance Department',
+        text: 'Emergency ambulance coordination, patient support and response facilitation.',
+        badge: 'Department',
       },
       donation: {
         title: 'Donation Verification',
@@ -181,7 +216,7 @@ const homeCopy = {
       titleLine1: 'ممبر ویریفائیڈ',
       titleLine2: 'سپورٹ پروگرامز',
       description:
-        'پروگرام کارڈز اب صاف ہیں اور اسٹیٹس بیجز موجودہ پورٹل رول آؤٹ کے مطابق ہیں، ہر ماڈیول کو مکمل ایکٹو نہیں دکھایا گیا۔',
+        'تعلیم، صحت، ویلفیئر اور روزگار موجودہ ایپ ماڈیولز کے طور پر برقرار ہیں۔ اضافی MBJP شعبہ جات پبلک کوآرڈینیشن اور مستقبل کے ڈیجیٹل ورک فلو کے لیے شامل کیے گئے ہیں۔',
       membership: {
         title: 'ممبرشپ پورٹل',
         text: 'MBJP ممبر کے طور پر رجسٹر ہوں، منظوری اسٹیٹس ٹریک کریں اور اپنا ڈیجیٹل ممبرشپ کارڈ حاصل کریں۔',
@@ -206,6 +241,41 @@ const homeCopy = {
         title: 'روزگار پروگرام',
         text: 'جاب سیکرز مستقبل کے روزگار سپورٹ ریویو کے لیے پروفائل، اسکلز اور CV جمع کر سکیں گے۔',
         badge: 'فیز 2',
+      },
+      officeAdmin: {
+        title: 'شعبہ آفس ایڈمن',
+        text: 'آفس ریکارڈ، ممبرشپ کوآرڈینیشن، دستاویزات اور اندرونی انتظامی معاونت۔',
+        badge: 'شعبہ',
+      },
+      eventManagement: {
+        title: 'شعبہ پروگرام انتظامیہ',
+        text: 'میٹنگز، پروگرامز، اجتماعات، شیڈولز اور فیلڈ ایونٹ کوآرڈینیشن۔',
+        badge: 'شعبہ',
+      },
+      finance: {
+        title: 'شعبہ مالیات',
+        text: 'ممبرشپ فیس کوآرڈینیشن، عطیات، رسیدیں اور فنانس ریکارڈ سپورٹ۔',
+        badge: 'شعبہ',
+      },
+      sports: {
+        title: 'شعبہ کھیل',
+        text: 'کمیونٹی اسپورٹس ایونٹس، نوجوانوں کی شرکت اور صحت مند سرگرمیوں کی کوآرڈینیشن۔',
+        badge: 'شعبہ',
+      },
+      mediaMarketing: {
+        title: 'شعبہ اطلاعات و نشریات',
+        text: 'اعلانات، پبلک اپڈیٹس، سوشل میڈیا، مہمات اور کمیونیکیشن مواد۔',
+        badge: 'شعبہ',
+      },
+      publicRelation: {
+        title: 'شعبہ تعلقات عامہ',
+        text: 'کمیونٹی تعلقات، پبلک رابطہ، کوآرڈینیشن اور ممبر سہولت کاری۔',
+        badge: 'شعبہ',
+      },
+      ambulance: {
+        title: 'شعبہ ایمبولینس',
+        text: 'ایمرجنسی ایمبولینس کوآرڈینیشن، مریض سپورٹ اور رسپانس سہولت کاری۔',
+        badge: 'شعبہ',
       },
       donation: {
         title: 'عطیہ ویریفکیشن',
@@ -309,7 +379,7 @@ const homeCopy = {
       titleLine1: 'ميمبر ويريفائيڊ',
       titleLine2: 'سپورٽ پروگرامز',
       description:
-        'پروگرام ڪارڊز هاڻي صاف آهن ۽ اسٽيٽس بيجز موجوده پورٽل رول آئوٽ مطابق آهن، هر ماڊيول کي مڪمل ايڪٽو نه ڏيکاريو ويو.',
+        'تعليم، صحت، ويلفيئر ۽ روزگار موجوده ايپ ماڊيولز طور برقرار آهن. اضافي MBJP شعبا عوامي ڪوآرڊينيشن ۽ مستقبل جي ڊجيٽل ورڪ فلو لاءِ شامل ڪيا ويا آهن.',
       membership: {
         title: 'ميمبرشپ پورٽل',
         text: 'MBJP ميمبر طور رجسٽر ٿيو، منظوري اسٽيٽس ٽريڪ ڪريو ۽ پنهنجو ڊجيٽل ميمبرشپ ڪارڊ حاصل ڪريو.',
@@ -334,6 +404,41 @@ const homeCopy = {
         title: 'روزگار پروگرام',
         text: 'جاب سيڪرز مستقبل جي روزگار سپورٽ ريَويو لاءِ پروفائل، اسڪلز ۽ CV جمع ڪري سگهندا.',
         badge: 'فيز 2',
+      },
+      officeAdmin: {
+        title: 'شعبو آفيس ايڊمن',
+        text: 'آفيس رڪارڊ، ميمبرشپ ڪوآرڊينيشن، دستاويز ۽ اندروني انتظامي مدد.',
+        badge: 'شعبو',
+      },
+      eventManagement: {
+        title: 'شعبو پروگرام انتظاميه',
+        text: 'ميٽنگون، پروگرام، گڏجاڻيون، شيڊول ۽ فيلڊ ايونٽ ڪوآرڊينيشن.',
+        badge: 'شعبو',
+      },
+      finance: {
+        title: 'شعبو ماليات',
+        text: 'ميمبرشپ فيس ڪوآرڊينيشن، عطيا، رسيدون ۽ فنانس رڪارڊ سپورٽ.',
+        badge: 'شعبو',
+      },
+      sports: {
+        title: 'شعبو راندين',
+        text: 'ڪميونٽي راندين جا ايونٽ، نوجوانن جي شرڪت ۽ صحتمند سرگرمين جي ڪوآرڊينيشن.',
+        badge: 'شعبو',
+      },
+      mediaMarketing: {
+        title: 'شعبو اطلاعات ۽ نشريات',
+        text: 'اعلان، عوامي اپڊيٽس، سوشل ميڊيا، مهمون ۽ ڪميونيڪيشن مواد.',
+        badge: 'شعبو',
+      },
+      publicRelation: {
+        title: 'شعبو عوامي تعلقات',
+        text: 'ڪميونٽي تعلقات، عوامي رابطو، ڪوآرڊينيشن ۽ ميمبر سهولت ڪاري.',
+        badge: 'شعبو',
+      },
+      ambulance: {
+        title: 'شعبو ايمبولينس',
+        text: 'ايمرجنسي ايمبولينس ڪوآرڊينيشن، مريض سپورٽ ۽ رسپانس سهولت ڪاري.',
+        badge: 'شعبو',
       },
       donation: {
         title: 'عطيو ويريفڪيشن',

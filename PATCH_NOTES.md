@@ -1,24 +1,25 @@
-# MBJP Responsive Header + Hero Patch
+# MBJP Departments Program Gateway Patch
 
-## Purpose
-Fix desktop 100% zoom layout issues shown in the screenshots:
+This patch keeps the current application modules unchanged:
 
-- Header content overflowing/cropping on the right side.
-- Long brand name making the header too wide.
-- Language switcher and admin/account actions pushing out of viewport.
-- Hero section/card preview appearing too large at normal browser zoom.
+- Education Support
+- Health Assistance / Medical Support
+- Welfare Cases
+- Employment Program
 
-## Changed files
+It adds the additional MBJP departments from the provided screenshot as public program/department gateway pages:
 
-- `src/components/layout/Header.tsx`
-- `src/routes/index.tsx`
-- `src/styles.css`
+- Office Admin Department / شعبہ آفس ایڈمن
+- Event Management Department / شعبہ پروگرام انتظامیہ
+- Finance Department / شعبہ مالیات
+- Sports Department / شعبہ کھیل
+- Media & Marketing Department / شعبہ اطلاعات و نشریات
+- Public Relation Department / شعبہ تعلقات عامہ
+- Ambulance Department / شعبہ ایمبولینس
 
-## What changed
+## Notes
 
-- Header brand pill changed to compact `MBJP / Member Portal` display while preserving full organization name in aria/title.
-- Header nav/actions received stable CSS hooks.
-- Desktop header widths, nav gaps, language switcher and Admin Panel button are responsive.
-- Header automatically switches to the mobile two-row nav for narrower desktop/laptop widths.
-- Hero panel, title and preview card scale down at 100% zoom.
-- Preview card heading shortened to avoid crowding.
+- No existing database program workflow is changed.
+- Existing education, health, welfare and employment application/admin modules remain as they are.
+- New departments are informational gateway pages for public coordination and future digital workflow expansion.
+- Programs dropdown now supports scrolling because the department list is longer.
