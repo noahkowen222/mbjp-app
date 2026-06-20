@@ -1,0 +1,1 @@
+var e=`mbjp_language`;function t(){if(typeof window>`u`)return`en`;let t=window.localStorage.getItem(e);return t===`ur`||t===`sd`||t===`en`?t:`en`}function n(e,n,r=t()){return e?.[r]??e?.en??n}export{n as t};

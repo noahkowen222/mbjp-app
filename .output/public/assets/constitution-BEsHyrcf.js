@@ -1,0 +1,1 @@
+import{t as e}from"./vendor-react-Cl1mf9Pa.js";import{t}from"./-cms-public-page-DmD__Xxu.js";var n=e();function r(){return(0,n.jsx)(t,{slug:`constitution`})}export{r as component};
